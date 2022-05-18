@@ -13,6 +13,7 @@ function NavOpen({ setNav, nav }) {
   const text3 = useRef(null);
   const text4 = useRef(null);
   const xIcons = useRef(null);
+  const xIcons2 = useRef(null);
   const [navClose, setNavClose] = useState(true);
   const [xs, setXs] = useState(false);
   function navCloseHandler() {
@@ -54,12 +55,23 @@ function NavOpen({ setNav, nav }) {
       if (xs) {
         tl2
           .to(xIcons.current, {
-            rotateZ: 360,
+            rotateZ: 90,
             duration: 0.3,
             ease: "power1.out",
           })
           .to(xIcons.current, {
-            rotateZ: 0,
+            rotateZ: -90,
+            duration: 0.3,
+            ease: "power1.out",
+          });
+        tl2
+          .to(xIcons2.current, {
+            rotateZ: 90,
+            duration: 0.3,
+            ease: "power1.out",
+          })
+          .to(xIcons2.current, {
+            rotateZ: -90,
             duration: 0.3,
             ease: "power1.out",
           });
@@ -78,6 +90,7 @@ function NavOpen({ setNav, nav }) {
           </div>
 
           <XIcon
+            ref={xIcons2}
             onClick={navCloseHandler}
             className="w-10 cursor-pointer md:hidden "
           />
