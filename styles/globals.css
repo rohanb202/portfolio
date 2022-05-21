@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 body {
-  background-color: black;
+  background-color: #000000;
+  overflow-x: hidden;
 }
 @font-face {
   font-family: "damn";
@@ -30,13 +31,14 @@ body {
 
 /* mainText */
 .textStroke2 {
-  color: white;
-  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  color: #e8eddf;
+  -webkit-text-fill-color: #e8eddf; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-color: #242423;
 }
+
 .textStroke {
-  color: black;
+  color: #242423;
   clip-path: polygon(0 0, 0% 0, 0% 100%, 0% 100%);
 }
 
@@ -66,4 +68,42 @@ body {
   100% {
     clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
   }
+}
+/* project text */
+.textStroke4 {
+  color: #f4f4f4;
+  clip-path: polygon(0 0, 0% 0, 0% 100%, 0% 100%);
+}
+.textStroke3 {
+  color: #000000;
+  -webkit-text-fill-color: #000000; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #f4f4f4;
+}
+/* scroll rev */
+.textStroke5 {
+  color: #f4f4f4;
+  clip-path: polygon(0 0, 0% 0, 0% 100%, 0% 100%);
+}
+.textStroke6 {
+  color: #cfdbd5;
+  -webkit-text-fill-color: #cfdbd5; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #000000;
+}
+.sha2 {
+  clip-path: circle(0% at 50% 50%);
+}
+.glow {
+  position: absolute;
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #db0138;
+  box-shadow: 0 0 60px 30px #fff, 0 0 100px 60px #ff0000, 0 0 140px 90px #ff7b7b;
+}
+.sc {
+  transform: scale(35);
 }

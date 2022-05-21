@@ -27,17 +27,26 @@ function NavOpen({ setNav, nav }) {
   useEffect(() => {
     let tl = gsap.timeline();
     let tl2 = gsap.timeline();
+    let tl3 = gsap.timeline();
+    let tl4 = gsap.timeline();
 
     // tl.from(logo.current, { opacity: 0, duration: 2 });
     const texts = [text1.current, text2.current, text3.current, text4.current];
     if (nav) {
+      document.querySelector("body").style.overflow = "hidden";
       tl.to(bg.current, {
         width: "100vw",
         duration: 0.5,
         ease: "power3.inOut",
       });
     }
+
+    if (navClose) {
+      tl3.to(logo.current, { duration: 0.2, opacity: 1 });
+    }
+
     if (!navClose) {
+      tl3.to(logo.current, { duration: 0.2, yPercent: "-150" });
       tl.to([...texts], {
         stagger: 0.02,
         xPercent: "-100",
@@ -64,7 +73,7 @@ function NavOpen({ setNav, nav }) {
             duration: 0.3,
             ease: "power1.out",
           });
-        tl2
+        tl4
           .to(xIcons2.current, {
             rotateZ: 90,
             duration: 0.3,
@@ -83,16 +92,16 @@ function NavOpen({ setNav, nav }) {
 
   return (
     <div>
-      <div className="absolute z-10 w-full ">
-        <div className="flex items-center justify-between px-10 pt-5 h-[10vh]">
-          <div ref={logo}>
+      <div className="fixed z-20 w-full ">
+        <div className="flex w-[100vw] items-center justify-between px-10 pt-5 h-[10vh]">
+          <div ref={logo} className="opacity-0">
             <LogoLoder />
           </div>
 
           <XIcon
             ref={xIcons2}
             onClick={navCloseHandler}
-            className="w-10 cursor-pointer md:hidden "
+            className={`w-10  cursor-pointer md:hidden text-[#242423]  `}
           />
         </div>
         <XIcon
@@ -104,7 +113,7 @@ function NavOpen({ setNav, nav }) {
           //     setXs(false);
           //   }}
           onClick={navCloseHandler}
-          className="absolute top-0 bottom-0 z-10 hidden w-10 my-auto cursor-pointer right-10 md:inline-block "
+          className="absolute top-0 bottom-0 z-10 hidden w-10 my-auto cursor-pointer right-10 md:inline-block text-[#242423] "
         />
         <div className="flex  flex-col justify-center w-full h-[90vh] px-4 space-y-10">
           <div ref={text1}>
@@ -121,7 +130,7 @@ function NavOpen({ setNav, nav }) {
           </div>
         </div>
       </div>
-      <div ref={bg} className="w-0 h-screen bg-white "></div>
+      <div ref={bg} className="w-0 h-screen bg-[#e8eddf] fixed z-10 "></div>
     </div>
   );
 }

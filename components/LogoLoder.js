@@ -45,9 +45,9 @@ function LogoLoder({ size }) {
   }, []);
 
   return (
-    <div className={` flex flex-col text-[20px]  BGB`}>
+    <div className={` flex flex-col text-[20px] text-[#242423]  BGB`}>
       <div ref={box1}>XO</div>
-      <div ref={line} className="inline-block h-1 bg-black w-[35px]"></div>
+      <div ref={line} className="inline-block h-1 bg-[#242423] w-[35px]"></div>
       <div ref={box2}>NO</div>
     </div>
   );
