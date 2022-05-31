@@ -117,7 +117,7 @@ export default function Home() {
     });
     tl2.to(shaRef.current, {
       rotation: 360 * 5,
-      duration: 1,
+
       scale: 1,
 
       ease: "none",
@@ -149,7 +149,7 @@ export default function Home() {
           />
         </div>
         <section ref={preHome} className="">
-          <div className="p-10 text-white text-9xl">Hello</div>
+          <div className="p-10 text-white text-7xl BGB">I'm</div>
           <div className="relative w-screen h-[150vh] bg">
             <div className="absolute  mx-auto inset-x-0 z-[1] w-[500px] bottom-0 ">
               <img src="/images/skel.png" className=""></img>
@@ -168,7 +168,7 @@ export default function Home() {
                 O
               </div>
             </div>
-            <div className="absolute bottom-0 w-full text-white bg-gradient-to-t from-[#a18cd1] to-transparent h-[50vh] z-[1]"></div>
+            <div className="absolute bottom-0 w-full text-white bg-gradient-to-t from-[#fe0944] to-transparent h-[50vh] z-[1]"></div>
           </div>
           <div className="absolute  w-full text-white bg-black h-[30vh] z-[1]"></div>
         </section>
@@ -193,7 +193,7 @@ export default function Home() {
             <img
               ref={shaRef}
               className="absolute inset-0 m-auto opacity-0 sc "
-              src="/images/s2.svg"
+              src="/images/s2col.svg"
               alt=""
             />
           </section>

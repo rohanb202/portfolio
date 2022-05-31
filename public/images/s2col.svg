@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg id="sharingan" width="300" height="300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs id="defs">
+    <radialGradient id="gr">
+      <stop offset="1" style="stop-opacity: 1; stop-color: rgb(254, 9, 68);" id="st1"/>
+      <stop style="stop-opacity: 1; stop-color: rgb(254, 174, 150);" offset="1" id="st3"/>
+    </radialGradient>
+  </defs>
+  <circle style="fill: url(#gr); stroke:#000; stroke-width:10;" cx="150" cy="150" r="145" id="iris"/>
+  <circle style="fill:none; stroke:#000000; stroke-width:4;stroke-opacity:0.3" cx="150" cy="150" r="90" id="circle"/>
+  <g id="tomoe 1">
+    <circle style="fill:#000;" cx="60" cy="150" r="20" id="tomoe 1a"/>
+    <path style="fill:#000;" d="M 60,170 59.4,152.9 C 43.9,152.9 28.7,154.1 18.8,133.3 22.4,156 32.8,170 60,170 z" id="tomoe 1b"/>
+  </g>
+  <use transform="matrix(-0.4999999999999998, 0.8660254037844387, -0.8660254037844387, -0.4999999999999998, 354.9038105676658, 95.09618943233417)" id="tomoe 2" xlink:href="#tomoe 1"/>
+  <use transform="matrix(-0.4999999999999998, -0.8660254037844387, 0.8660254037844387, -0.4999999999999998, 95.09618943233417, 354.9038105676658)" id="tomoe 3" xlink:href="#tomoe 1"/>
+  <circle style="fill:#000;" cx="150" cy="150" r="25" id="center"/>
+</svg>

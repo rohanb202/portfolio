@@ -59,12 +59,12 @@ function Project({ no, text, date, link, rev }) {
             rev && `flex-row-reverse`
           } flex w-10/12 min-w-[300px] pt-5 pb-1  justify-end items-center space-x-2`}
         >
-          <h1 className="text-white BGB text-left relative z-10">{text}</h1>
+          <h1 className="relative z-10 text-left text-white BGB">{text}</h1>
           <div className="relative px-2">
-            <ArrowUpIcon className="w-5 text-white rotate-45  z-10" />
+            <ArrowUpIcon className="z-10 w-5 text-white rotate-45" />
             <div
               ref={circ}
-              className="w-5 h-5 bg-lime-400 absolute rounded-full top-0 -z-[1] "
+              className="w-5 h-5 bg-[#fe0944] absolute rounded-full top-0 -z-[1] "
             ></div>
           </div>
         </div>
