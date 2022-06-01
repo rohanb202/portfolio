@@ -59,9 +59,9 @@ function Project({ no, text, date, link, rev }) {
             rev && `flex-row-reverse`
           } flex w-10/12 min-w-[300px] pt-5 pb-1  justify-end items-center space-x-2`}
         >
-          <h1 className="relative z-10 text-left text-white BGB">{text}</h1>
+          <h1 className="relative z-10 text-left  BGB">{text}</h1>
           <div className="relative px-2">
-            <ArrowUpIcon className="z-10 w-5 text-white rotate-45" />
+            <ArrowUpIcon className="z-10 w-5  rotate-45" />
             <div
               ref={circ}
               className="w-5 h-5 bg-[#fe0944] absolute rounded-full top-0 -z-[1] "
@@ -69,7 +69,7 @@ function Project({ no, text, date, link, rev }) {
           </div>
         </div>
         <div
-          className={`text-white  flex items-center space-x-2 pl-10 font-semibold ${
+          className={`  flex items-center space-x-2 pl-10 font-semibold ${
             rev && `flex-row-reverse` && ` justify-end pr-2`
           }`}
         >
@@ -77,11 +77,7 @@ function Project({ no, text, date, link, rev }) {
           <p>{date}</p>
         </div>
       </div>
-      <div
-        className={`text-white hidden lg:inline-flex relative ${
-          !rev && "-left-20"
-        } `}
-      >
+      <div className={` hidden lg:inline-flex relative ${!rev && "-left-20"} `}>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis eos
         aspernatur sequi, quas magni enim. Dignissimos explicabo voluptas,
         voluptate praesentium nihil itaque doloremque sequi ipsum provident,

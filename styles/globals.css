@@ -2,9 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: #000000;
+/* body {
   overflow-x: hidden;
+} */
+body {
+  @apply bg-[#1C1C20]  overflow-x-hidden;
 }
 @font-face {
   font-family: "damn";
@@ -34,11 +36,11 @@ body {
   color: #e8eddf;
   -webkit-text-fill-color: #e8eddf; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #242423;
+  -webkit-text-stroke-color: #1c1c20;
 }
 
 .textStroke {
-  color: #242423;
+  color: #1c1c20;
   clip-path: polygon(0 0, 0% 0, 0% 100%, 0% 100%);
 }
 
@@ -71,25 +73,25 @@ body {
 }
 /* project text */
 .textStroke4 {
-  color: #f4f4f4;
+  color: #ffffff;
   clip-path: polygon(0 0, 0% 0, 0% 100%, 0% 100%);
 }
 .textStroke3 {
-  color: #000000;
-  -webkit-text-fill-color: #000000; /* Will override color (regardless of order) */
+  color: #1c1c20;
+  -webkit-text-fill-color: #1c1c20; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #f4f4f4;
+  -webkit-text-stroke-color: #ffffff;
 }
 /* scroll rev */
 .textStroke5 {
-  color: #f4f4f4;
+  color: #ffffff;
   clip-path: polygon(0 0, 0% 0, 0% 100%, 0% 100%);
 }
 .textStroke6 {
-  color: #cfdbd5;
-  -webkit-text-fill-color: #cfdbd5; /* Will override color (regardless of order) */
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #000000;
+  -webkit-text-stroke-color: #1c1c20;
 }
 .sha2 {
   clip-path: circle(0% at 50% 50%);
@@ -115,4 +117,7 @@ body {
 .bg {
   background-color: #feae96;
   background-image: linear-gradient(315deg, #feae96 0%, #fe0944 74%);
+}
+.blackText {
+  color: #1c1c20;
 }

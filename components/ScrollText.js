@@ -31,9 +31,7 @@ function ScrollText({ text, rev }) {
   return (
     <section ref={ref}>
       <div
-        className={` relative flex justify-between space-x-10 left-56 text-9xl BGB ${
-          rev ? `textStroke6` : `textStroke3`
-        } `}
+        className={` relative flex justify-between space-x-10 left-56 text-9xl BGB `}
         ref={w}
       >
         <h1>{text}</h1>
