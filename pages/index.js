@@ -247,7 +247,7 @@ export default function Home() {
     ];
     circs.forEach((circ, i) => {
       tl3.to(circ, {
-        y: `${i * (circ.offsetHeight / 2) * 0.5}`,
+        y: `${(i + 1) * (circ.offsetHeight / 2) * 0.5}`,
         ease: "none",
       });
     });
@@ -258,7 +258,7 @@ export default function Home() {
       });
     });
     tl4.to(itachi.current, {
-      y: `${(animeRef.current.scrollWidth - itachi.current.offsetWidth) / 1}`,
+      y: `${itachi.current.offsetHeight / 4}`,
     });
 
     gsap.to(glow.current, {
@@ -432,9 +432,9 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <div className="relative"></div>
-          <section className="relative" ref={animeRef}>
-            <div className="absolute lg:top-[60%] flex flex-col items-center justify-center w-full text-center text-white BGB text-4xl lg:text-7xl z-[3]  ">
+
+          <section className="relative sm:top-0 -top-[10rem]" ref={animeRef}>
+            <div className="absolute lg:top-[60%] flex flex-col items-center justify-center w-full text-center text-white BGB text-4xl top-[50%] lg:text-7xl z-[3]  ">
               <div ref={at3} className="absolute textStroke3">
                 and watch <br /> a lot of anime
               </div>
