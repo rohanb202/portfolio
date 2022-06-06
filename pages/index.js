@@ -19,6 +19,7 @@ let ScrollText = dynamic(import("../components/ScrollText"), { ssr: false });
 import Project from "../components/Project";
 import Navbar from "../components/Navbar";
 import MultiscrollText from "../components/MultiscrollText";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const [nav, setNav] = useState(false);
@@ -55,13 +56,22 @@ export default function Home() {
   const circles = useRef(null);
   let main = useRef(null);
   let pro1 = useRef(null);
-
+  let shaStart = useRef(null);
+  let router = useRouter();
   useEffect(() => {
     AOS.init();
     AOS.refresh();
+    if (
+      window.performance.navigation &&
+      window.performance.navigation.type === 1
+    ) {
+      router.push("/");
+    }
+
     if (!nav) {
       document.querySelector("body").style.overflowY = "auto";
     }
+
     let body = document.querySelector("body");
     gsap.to(body, {
       backgroundColor: "#ffffff",
@@ -196,7 +206,6 @@ export default function Home() {
         start: "+=100%",
         end: "+=50%",
         scrub: true,
-        markers: true,
       },
     });
     let tl4 = gsap.timeline({
@@ -228,15 +237,7 @@ export default function Home() {
       const movement = text.layer.offsetHeight * depth;
       tl.to(text.layer, { y: movement, ease: "none" }, 0);
     });
-    gsap.to(shaRef.current, {
-      opacity: 1,
-      scrollTrigger: {
-        trigger: homeRef.current,
 
-        scrub: 0.2,
-        start: "top top",
-      },
-    });
     tl3.to(circles.current, { opacity: 1 });
     const circs = [
       circ1.current,
@@ -247,7 +248,7 @@ export default function Home() {
     ];
     circs.forEach((circ, i) => {
       tl3.to(circ, {
-        y: `${(i + 1) * (circ.offsetHeight / 2) * 0.5}`,
+        y: `${i * (circ.offsetHeight / 2) * 0.5}`,
         ease: "none",
       });
     });
@@ -258,7 +259,7 @@ export default function Home() {
       });
     });
     tl4.to(itachi.current, {
-      y: `${itachi.current.offsetHeight / 4}`,
+      y: `${itachi.current.offsetHeight / 3}`,
     });
 
     gsap.to(glow.current, {
@@ -270,20 +271,51 @@ export default function Home() {
         start: "top top",
       },
     });
-    tl2.to(shaRef.current, {
-      rotation: 360 * 5,
-
-      scale: 1,
-
-      ease: "none",
+    gsap.to(shaRef.current, {
+      opacity: 1,
       scrollTrigger: {
         trigger: homeRef.current,
-        pin: true,
+
         scrub: 0.2,
         start: "top top",
-        end: "+=125%",
       },
     });
+    // tl2.to(shaRef.current, {
+    //   opacity: 1,
+    //   scrollTrigger: {
+    //     trigger: shaStart.current,
+    //   },
+    // });
+    tl2
+      .to(shaRef.current, {
+        rotation: 360 * 5,
+
+        scale: 1,
+
+        ease: "none",
+        scrollTrigger: {
+          trigger: homeRef.current,
+          pin: true,
+          scrub: 0.2,
+          start: "bottom bottom",
+          end: "+=125%",
+        },
+      })
+      .to(
+        shaStart.current,
+        {
+          opacity: 0,
+          scrollTrigger: {
+            trigger: homeRef.current,
+            pin: true,
+            scrub: 0.2,
+            start: "bottom bottom",
+            end: "+=125%",
+          },
+        },
+
+        "<"
+      );
   }, []);
 
   return (
@@ -310,11 +342,21 @@ export default function Home() {
           className="inset-x-0 mx-auto text-center max-w-screen-2xl "
         >
           <Navbar setNav={setNav} nav={nav} />
-          <div className="relative p-10 text-white BGB">
+          <div className="relative p-5 text-white sm:p-10 BGB">
             <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
-              <span className="textStroke3">Hey, I&apos;m </span>
-              <span className=" whitespace-nowrap">Rohan Bhandari</span> <br />
-              <span className="textStroke3">But you can call me</span>
+              <span data-aos="fade-up" className="textStroke3 ">
+                Hey, I&apos;m{" "}
+              </span>
+              <span data-aos="fade-up" className=" whitespace-nowrap">
+                Rohan Bhandari
+              </span>{" "}
+              <br />
+              <span
+                data-aos="fade-up"
+                className="textStroke3 whitespace-nowrap"
+              >
+                But you can call me
+              </span>
             </h1>
             <div className="flex opacity-[0.7] flex-col items-center my-20 space-y-10 lg:space-y-20">
               <div ref={line1} className="block w-[50%] h-1 bg-white"></div>
@@ -346,14 +388,36 @@ export default function Home() {
             </div>
             <div className="absolute bottom-0 w-full text-white bg-gradient-to-t from-[#fe0944] to-transparent h-[25vh] lg:h-[50vh] z-[1]"></div>
           </div>
-          <div className="absolute  w-full text-white bg-[#1C1C20]  h-[30vh] z-[1]"></div>
+          {/* <div className="absolute  w-full text-white bg-[#1C1C20]  h-[30vh] z-[1]"></div> */}
         </section>
 
-        <div className="relative">
+        <div className="relative" id="about">
           <section
             className="relative h-[100vh] text-5xl text-white lg:text-9xl"
             ref={homeRef}
           >
+            <div
+              ref={shaStart}
+              className="absolute flex flex-col items-center h-full justify-center px-[8vw] py-10 text-center  z-[5] BGB text-white text-7xl w-full"
+            >
+              <h1 data-aos="fade-down" className=" textStroke3">
+                ABOUT
+              </h1>
+              <div className="flex flex-col sm:flex-row items-center justify-center">
+                <img
+                  data-aos="fade-up"
+                  src="/images/fs.gif"
+                  className="w-[30rem]"
+                  alt=""
+                />
+                <h1
+                  data-aos="fade-right"
+                  className="py-5 text-xl leading-loose sm:py-10 md:text-3xl lg:text-5xl"
+                >
+                  I&apos;m a full stack web developer from India
+                </h1>
+              </div>
+            </div>
             <div
               className="opacity-0 glow w-[50px] h-[50px] lg:w-[100px] lg:h-[100px] "
               ref={glow}
@@ -434,18 +498,6 @@ export default function Home() {
           </section>
 
           <section className="relative sm:top-0 -top-[10rem]" ref={animeRef}>
-            <div className="absolute lg:top-[60%] flex flex-col items-center justify-center w-full text-center text-white BGB text-4xl top-[50%] lg:text-7xl z-[3]  ">
-              <div ref={at3} className="absolute textStroke3">
-                and watch <br /> a lot of anime
-              </div>
-              <div ref={at2} className="absolute textStroke3 ">
-                and watch <br /> a lot of anime
-              </div>
-              <div ref={at1} className="absolute ">
-                and watch <br /> a lot of anime
-              </div>
-            </div>
-
             <div className="relative mx-auto inset-x-0 -top-[10rem] lg:-top-[20rem]  flex justify-center py-10 ">
               <img
                 ref={itachi}
@@ -453,6 +505,19 @@ export default function Home() {
                 className=" relative inset-x-0 mx-auto  object-cover min-w-[800px] scale-[1.2] z-[1] "
                 alt=""
               />
+            </div>
+            <div className="relative sm:-top-[30vh]  flex flex-col items-center justify-center w-full text-center text-white BGB text-4xl  lg:text-7xl z-[3]  ">
+              <div ref={at3} className="absolute textStroke3">
+                who loves <br />
+                to watch anime
+              </div>
+              <div ref={at2} className="absolute textStroke3 ">
+                who loves <br />
+                to watch anime
+              </div>
+              <div ref={at1} className="absolute ">
+                who loves <br /> to watch anime
+              </div>
             </div>
           </section>
 
@@ -464,7 +529,7 @@ export default function Home() {
               <ScrollText text="PROJECTS" />
             </div>
             <div className="mt-10 px-[8vw]">
-              <div ref={pro1}>
+              <div ref={pro1} id="project">
                 <Project
                   no="01"
                   text="LinkedIn Clone"
@@ -502,18 +567,36 @@ export default function Home() {
               <ScrollText text="CONTACT" rev />
             </div>
             <div className="px-[8vw] ">
-              <div className="flex flex-col items-center py-5 space-x-5 lg:py-10 sm:flex-row">
+              <div className="flex flex-col items-center py-2 space-x-5 lg:py-10 sm:flex-row">
                 <div className="py-2 text-4xl textStroke6 md:text-6xl BGB lg:text-7xl">
                   Let&apos;s
                 </div>
+                <div className="hidden sm:block">
+                  <MultiscrollText />
+                </div>
+              </div>
+              <div className="relative inset-x-0 mx-auto sm:hidden">
                 <MultiscrollText />
               </div>
             </div>
-            <div className="absolute px-[8vw] bottom-0 pb-10 flex items-center justify-around w-full space-x-5 ">
+            <div
+              id="contact"
+              className="absolute px-[8vw] bottom-0 pb-10 flex items-center justify-around w-full space-x-5"
+            >
               <div className="block w-full h-1 bg-[#1c1c20]"></div>
-              <img className="w-10" src="/images/insta.svg" alt="" />
-              <img className="w-10" src="/images/github1.svg" alt="" />
-              <img className="w-10" src="/images/linkedin.svg" alt="" />
+              <a href="">
+                <img className="w-20" src="/images/insta.svg" alt="" />
+              </a>
+              <a target="_blank" href="https://github.com/rohanb202">
+                <img className="w-20" src="/images/github1.svg" alt="" />
+              </a>
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/rohan-bhandari-8824b0209/"
+              >
+                <img className="w-20" src="/images/linkedin.svg" alt="" />
+              </a>
+
               <div className="block w-full h-1 bg-[#1c1c20]"></div>
             </div>
           </section>

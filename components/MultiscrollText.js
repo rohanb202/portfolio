@@ -49,9 +49,21 @@ function MultiscrollText() {
     //     visibility: "hidden",
     //   });
   }, []);
-
+  const desk = (
+    <div className="flex flex-col items-center mx-auto space-x-5 text-4xl whitespace-nowrap sm:flex-row BGB md:text-6xl lg:text-7xl">
+      <div className="absolute opacity-0" ref={st1}>
+        Work Together
+      </div>
+      <div ref={st2} className="absolute opacity-0">
+        Collaborate
+      </div>
+      <div ref={st3} className="absolute opacity-0">
+        Grab Coffee
+      </div>
+    </div>
+  );
   return (
-    <div className="flex flex-col items-center space-x-5 text-4xl whitespace-nowrap sm:flex-row BGB md:text-6xl lg:text-7xl">
+    <div className="flex flex-col items-center mx-auto space-x-5 text-4xl whitespace-nowrap sm:flex-row BGB md:text-6xl lg:text-7xl">
       <div className="absolute opacity-0" ref={st1}>
         Work Together
       </div>

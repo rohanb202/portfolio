@@ -20,10 +20,9 @@ function Navbar({ setNav, nav }) {
           />
         )}
       </div>
-      <div className="justify-around hidden space-x-4 md:flex">
-        <a href="">About</a>
-        <a href="">Projects</a>
-        <a href="">Contact</a>
+      <div className="justify-around hidden space-x-4 md:flex z-[2]">
+        <a href="#project">Projects</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
   );

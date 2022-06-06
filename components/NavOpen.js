@@ -31,7 +31,7 @@ function NavOpen({ setNav, nav }) {
     let tl4 = gsap.timeline();
 
     // tl.from(logo.current, { opacity: 0, duration: 2 });
-    const texts = [text1.current, text2.current, text3.current, text4.current];
+    const texts = [text1.current, text3.current, text4.current];
     if (nav) {
       document.querySelector("body").style.overflow = "hidden";
       tl.to(bg.current, {
@@ -116,18 +116,15 @@ function NavOpen({ setNav, nav }) {
           className="absolute top-0 bottom-0 z-10 hidden w-10 my-auto cursor-pointer right-10 md:inline-block text-[#242423] "
         />
         <div className="flex  flex-col justify-center w-full h-[90vh] px-4 space-y-10">
-          <div ref={text1}>
+          <a onClick={navCloseHandler} href="#main" ref={text1}>
             <MainText text="HOME" />
-          </div>
-          <div ref={text2}>
-            <MainText text="ABOUT" />
-          </div>
-          <div ref={text3}>
+          </a>
+          <a onClick={navCloseHandler} href="#project" ref={text3}>
             <MainText text="PROJECT" />
-          </div>
-          <div ref={text4}>
+          </a>
+          <a onClick={navCloseHandler} href="#contact" ref={text4}>
             <MainText text="CONTACT" />
-          </div>
+          </a>
         </div>
       </div>
       <div ref={bg} className="w-0 h-screen bg-[#e8eddf] fixed z-10 "></div>
