@@ -312,7 +312,7 @@ export default function Home() {
           <Navbar setNav={setNav} nav={nav} />
           <div className="relative p-10 text-white BGB">
             <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
-              <span className="textStroke3">Hey, I'm </span>
+              <span className="textStroke3">Hey, I&apos;m </span>
               <span className=" whitespace-nowrap">Rohan Bhandari</span> <br />
               <span className="textStroke3">But you can call me</span>
             </h1>
