@@ -92,7 +92,7 @@ function NavOpen({ setNav, nav }) {
 
   return (
     <div>
-      <div className="fixed z-20 w-full ">
+      <div className="fixed z-20 w-full py-5 ">
         <div className="flex w-[100vw] items-center justify-between px-10 pt-5 h-[10vh]">
           <div ref={logo} className="opacity-0">
             <LogoLoder />

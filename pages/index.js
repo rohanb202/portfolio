@@ -10,13 +10,15 @@ import { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 //const ScrollTrigger = dynamic(() => import("gsap/ScrollTrigger"), {});
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 import { MenuAlt1Icon } from "@heroicons/react/solid";
 //import ScrollText from "../components/ScrollText";
 let ScrollText = dynamic(import("../components/ScrollText"), { ssr: false });
 //let useLocoScroll = dynamic(import("../hooks/useLocoScroll"), { ssr: false });
 import Project from "../components/Project";
 import Navbar from "../components/Navbar";
+import MultiscrollText from "../components/MultiscrollText";
 
 export default function Home() {
   const [nav, setNav] = useState(false);
@@ -34,6 +36,25 @@ export default function Home() {
   const themeTrigger = useRef(null);
   const scrollTextCol = useRef(null);
   const navBtn = useRef(null);
+  const line1 = useRef(null);
+  const line2 = useRef(null);
+  const line3 = useRef(null);
+  const line4 = useRef(null);
+  const line5 = useRef(null);
+  const itachi = useRef(null);
+  const circ1 = useRef(null);
+  const circ2 = useRef(null);
+  const circ3 = useRef(null);
+  const circ4 = useRef(null);
+  const circ5 = useRef(null);
+  const animeRef = useRef(null);
+  const at1 = useRef(null);
+  const at2 = useRef(null);
+  const at3 = useRef(null);
+  const xono = useRef(null);
+  const circles = useRef(null);
+  let main = useRef(null);
+  let pro1 = useRef(null);
 
   useEffect(() => {
     AOS.init();
@@ -49,7 +70,7 @@ export default function Home() {
       scrollTrigger: {
         trigger: contactRef.current,
         scrub: true,
-        start: "top bottom-=1000px",
+        start: "top bottom-=125%",
         end: "+=100%",
       },
     });
@@ -59,12 +80,13 @@ export default function Home() {
       scrollTrigger: {
         trigger: contactRef.current,
         scrub: true,
+
         toggleClass: {
           targets: scrollTextCol.current,
           className: "textStroke6",
           scrub: true,
         },
-        start: "top bottom-=1280px",
+        start: "+=50%",
         end: "+=100%",
       },
     });
@@ -79,7 +101,7 @@ export default function Home() {
           className: "blackText",
           scrub: true,
         },
-        start: "top bottom-=1280px",
+        start: "top bottom-=130%",
         end: "+=100%",
       },
     });
@@ -94,10 +116,32 @@ export default function Home() {
           className: "blackText",
           scrub: true,
         },
-        start: "top bottom-=1100px",
+        start: "top bottom-=130%",
         end: "+=100%",
       },
     });
+    let lines = [
+      line1.current,
+      line2.current,
+      line3.current,
+      line4.current,
+      line5.current,
+    ];
+    let tl = gsap.timeline({ repeat: -1, repeatDelay: 0.5 });
+    tl.to([...lines], {
+      opacity: 0,
+      stagger: 0.3,
+      duration: 1,
+    }).to(
+      [...lines],
+      {
+        opacity: 0.7,
+        stagger: 0.3,
+        duration: 1,
+      },
+      1
+    );
+
     // gsap.to(body, {
     //   backgroundColor: "#000000",
     //   immediateRender: false,
@@ -140,12 +184,39 @@ export default function Home() {
     let tl2 = gsap.timeline();
     let tl = gsap.timeline({
       scrollTrigger: {
-        trigger: preHome.current,
-        start: "top top",
+        trigger: xono.current,
+        start: "-=100%",
         end: "bottom top",
         scrub: true,
       },
     });
+    let tl3 = gsap.timeline({
+      scrollTrigger: {
+        trigger: itachi.current,
+        start: "+=100%",
+        end: "+=50%",
+        scrub: true,
+        markers: true,
+      },
+    });
+    let tl4 = gsap.timeline({
+      scrollTrigger: {
+        trigger: itachi.current,
+        start: "+=100%",
+        end: "+=50%",
+        scrub: true,
+      },
+    });
+    let tl5 = gsap.timeline({
+      scrollTrigger: {
+        trigger: projectRef.current,
+        start: "top top",
+        end: "+=50%",
+        scrub: true,
+      },
+    });
+    const ats = [at1.current, at2.current, at3.current];
+
     const texts = [
       { layer: text1.current, depth: 1.4 },
       { layer: text2.current, depth: 2 },
@@ -166,10 +237,34 @@ export default function Home() {
         start: "top top",
       },
     });
+    tl3.to(circles.current, { opacity: 1 });
+    const circs = [
+      circ1.current,
+      circ2.current,
+      circ3.current,
+      circ4.current,
+      circ5.current,
+    ];
+    circs.forEach((circ, i) => {
+      tl3.to(circ, {
+        y: `${i * (circ.offsetHeight / 2) * 0.5}`,
+        ease: "none",
+      });
+    });
+    ats.forEach((at, i) => {
+      tl5.to(at, {
+        y: `${i * at.offsetHeight * 0.1}`,
+        ease: "none",
+      });
+    });
+    tl4.to(itachi.current, {
+      y: `${(animeRef.current.scrollWidth - itachi.current.offsetWidth) / 1}`,
+    });
+
     gsap.to(glow.current, {
       opacity: 1,
       scrollTrigger: {
-        trigger: projectRef.current,
+        trigger: animeRef.current,
 
         scrub: 0.2,
         start: "top top",
@@ -186,100 +281,190 @@ export default function Home() {
         pin: true,
         scrub: 0.2,
         start: "top top",
-        end: "+=1000",
+        end: "+=125%",
       },
     });
   }, []);
 
   return (
-    <div>
+    <div className="" ref={main}>
       <Head>
         <title>Xono</title>
         <meta name="description" content="Generated by create next app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {nav && <NavOpen className="" setNav={setNav} nav={nav} />}
-      <div className="relative" id="main">
-        <div className="fixed right-0 z-10 flex h-screen p-2 ">
+      <div className="relative overflow-hidden" id="main">
+        <div className="fixed right-0 z-10 hidden h-screen p-2 md:flex ">
           <MenuAlt1Icon
             ref={navBtn}
             onClick={(e) => setNav(true)}
             className={`${
               nav && "hidden"
-            }   hover:scale-110  transition duration-100 ease-in-out top-0 bottom-0 w-10 my-auto text-white/80 cursor-pointer right-10  `}
+            }  hover:scale-110  transition duration-100 ease-in-out top-0 bottom-0 w-10 my-auto text-white/80 cursor-pointer right-10  `}
           />
         </div>
 
-        <section ref={preHome} className="text-center">
-          <Navbar />
-          <div className="p-10 text-white  BGB h-[100vh]">
-            <h1 className="textStroke3 text-7xl">
-              Hey, I'm <span className="textStroke6">Rohan Bhandari</span>{" "}
-              <br />
-              But you can call me
+        <section
+          ref={preHome}
+          className="inset-x-0 mx-auto text-center max-w-screen-2xl "
+        >
+          <Navbar setNav={setNav} nav={nav} />
+          <div className="relative p-10 text-white BGB">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
+              <span className="textStroke3">Hey, I'm </span>
+              <span className=" whitespace-nowrap">Rohan Bhandari</span> <br />
+              <span className="textStroke3">But you can call me</span>
             </h1>
-            <div className="flex flex-col items-center my-20 space-y-20">
-              <div className="block w-[50%] h-1 bg-white"></div>
-              <div className="block w-[40%] h-1 bg-white"></div>
-              <div className="block w-[30%] h-1 bg-white"></div>
-              <div className="block w-[20%] h-1 bg-white"></div>
-              <div className="block w-[10%] h-1 bg-white"></div>
+            <div className="flex opacity-[0.7] flex-col items-center my-20 space-y-10 lg:space-y-20">
+              <div ref={line1} className="block w-[50%] h-1 bg-white"></div>
+              <div ref={line2} className="block w-[40%] h-1 bg-white"></div>
+              <div ref={line3} className="block w-[30%] h-1 bg-white"></div>
+              <div ref={line4} className="block w-[20%] h-1 bg-white"></div>
+              <div ref={line5} className="block w-[10%] h-1 bg-white"></div>
             </div>
           </div>
-          <div className="relative w-screen h-[150vh] bg">
-            <div className="absolute  mx-auto inset-x-0 z-[1] w-[500px] bottom-0 ">
+        </section>
+        <section ref={xono} className="overflow-hidden ">
+          <div className="relative w-screen h-[50vh] sm:h-[75vh]  md:h-screen  xl:h-[150vh] bg">
+            <div className="absolute  mx-auto inset-x-0 z-[1] w-[200px] md:w-[300px] lg:w-[500px] bottom-0 ">
               <img src="/images/skel.png" className=""></img>
             </div>
-            <div className="relative z-0 flex justify-center w-full px-20 space-x-20 -top-[15%]">
-              <div ref={text1} className="text-white text-[20rem] BGB  ">
+            <div className="relative z-0 flex lg:text-[15rem] text-[4rem]   justify-center w-full px-20 xl:text-[20rem] space-x-10 lg:space-x-20 sm:text-[10rem] lg:-top-[5%] xl:-top-[15%]">
+              <div ref={text1} className="text-white BGB ">
                 X
               </div>
-              <div ref={text2} className="text-white text-[20rem] BGB  ">
+              <div ref={text2} className="text-white BGB ">
                 O
               </div>
-              <div ref={text3} className="text-white text-[20rem] BGB  ">
+              <div ref={text3} className="text-white BGB ">
                 N
               </div>
-              <div ref={text4} className="text-white text-[20rem] BGB ">
+              <div ref={text4} className="text-white BGB ">
                 O
               </div>
             </div>
-            <div className="absolute bottom-0 w-full text-white bg-gradient-to-t from-[#fe0944] to-transparent h-[50vh] z-[1]"></div>
+            <div className="absolute bottom-0 w-full text-white bg-gradient-to-t from-[#fe0944] to-transparent h-[25vh] lg:h-[50vh] z-[1]"></div>
           </div>
           <div className="absolute  w-full text-white bg-[#1C1C20]  h-[30vh] z-[1]"></div>
         </section>
 
-        <div className="px-[8vw] ">
-          {/* <section className="h-screen"></section> */}
+        <div className="relative">
           <section
-            className="h-screen text-5xl text-white lg:text-9xl"
+            className="relative h-[100vh] text-5xl text-white lg:text-9xl"
             ref={homeRef}
           >
-            {/* <h1 className="absolute z-10 flex BGB" ref={textRef1}>
-              Wake up
-            </h1>
-            <h1
-              className="absolute bottom-0 z-10 flex justify-end w-full BGB"
-              ref={textRef2}
+            <div
+              className="opacity-0 glow w-[50px] h-[50px] lg:w-[100px] lg:h-[100px] "
+              ref={glow}
+            ></div>
+            <div className="inset-0 flex justify-center m-auto ">
+              <img
+                ref={shaRef}
+                className="absolute  sc inset-0 m-auto opacity-0  z-[2] w-[50%] max-w-[300px] "
+                src="/images/s2col.svg"
+                alt=""
+              />
+            </div>
+            <div
+              ref={circles}
+              className="relative z-[-1] opacity-0 inset-x-0 top-[38%] sm:top-[30%]  m-auto  "
             >
-              to Reality
-            </h1> */}
+              <div
+                ref={circ1}
+                className="absolute inset-x-0 w-[50%] mx-auto opacity-80  max-w-[300px] max-h-[300px] "
+              >
+                <svg
+                  viewBox="0 0 100 100"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="#fe0944"
+                >
+                  <circle cx="50" cy="50" r="50" />
+                </svg>
+              </div>
+              <div
+                ref={circ2}
+                className="absolute inset-x-0 w-[50%] mx-auto opacity-60  max-w-[300px] max-h-[300px]"
+              >
+                <svg
+                  viewBox="0 0 100 100"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="#fe0944"
+                >
+                  <circle cx="50" cy="50" r="50" />
+                </svg>
+              </div>
+              <div
+                ref={circ3}
+                className="absolute inset-x-0 w-[50%] mx-auto opacity-40  max-w-[300px] max-h-[300px]"
+              >
+                <svg
+                  viewBox="0 0 100 100"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="#fe0944"
+                >
+                  <circle cx="50" cy="50" r="50" />
+                </svg>
+              </div>
+              <div
+                ref={circ4}
+                className="absolute inset-x-0 w-[50%] mx-auto opacity-20  max-w-[300px] max-h-[300px]"
+              >
+                <svg
+                  viewBox="0 0 100 100"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="#fe0944"
+                >
+                  <circle cx="50" cy="50" r="50" />
+                </svg>
+              </div>
+              <div
+                ref={circ5}
+                className="absolute inset-x-0 w-[50%] mx-auto opacity-10 max-w-[300px] max-h-[300px] "
+              >
+                <svg
+                  viewBox="0 0 100 100"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="#fe0944"
+                >
+                  <circle cx="50" cy="50" r="50" />
+                </svg>
+              </div>
+            </div>
+          </section>
+          <div className="relative"></div>
+          <section className="relative" ref={animeRef}>
+            <div className="absolute lg:top-[60%] flex flex-col items-center justify-center w-full text-center text-white BGB text-4xl lg:text-7xl z-[3]  ">
+              <div ref={at3} className="absolute textStroke3">
+                and watch <br /> a lot of anime
+              </div>
+              <div ref={at2} className="absolute textStroke3 ">
+                and watch <br /> a lot of anime
+              </div>
+              <div ref={at1} className="absolute ">
+                and watch <br /> a lot of anime
+              </div>
+            </div>
 
-            <div className="opacity-0 glow" ref={glow}></div>
-            <img
-              ref={shaRef}
-              className="absolute inset-0 m-auto opacity-0 sc z-[2]"
-              src="/images/s2col.svg"
-              alt=""
-            />
+            <div className="relative mx-auto inset-x-0 -top-[10rem] lg:-top-[20rem]  flex justify-center py-10 ">
+              <img
+                ref={itachi}
+                src="/images/sbg3.png"
+                className=" relative inset-x-0 mx-auto  object-cover min-w-[800px] scale-[1.2] z-[1] "
+                alt=""
+              />
+            </div>
           </section>
 
-          <section className="text-white" ref={projectRef}>
-            <div className="pt-2 textStroke3">
+          <section
+            className="relative overflow-x-hidden text-white"
+            ref={projectRef}
+          >
+            <div className="pt-2 overflow-x-hidden textStroke3">
               <ScrollText text="PROJECTS" />
             </div>
-            <div className="mt-10">
-              <div>
+            <div className="mt-10 px-[8vw]">
+              <div ref={pro1}>
                 <Project
                   no="01"
                   text="LinkedIn Clone"
@@ -310,8 +495,26 @@ export default function Home() {
             </div>
           </section>
           <section className="h-screen" ref={contactRef}>
-            <div className="pt-2 textStroke3" ref={scrollTextCol}>
+            <div
+              className="pt-2 overflow-x-hidden textStroke3"
+              ref={scrollTextCol}
+            >
               <ScrollText text="CONTACT" rev />
+            </div>
+            <div className="px-[8vw] ">
+              <div className="flex flex-col items-center py-5 space-x-5 lg:py-10 sm:flex-row">
+                <div className="py-2 text-4xl textStroke6 md:text-6xl BGB lg:text-7xl">
+                  Let's
+                </div>
+                <MultiscrollText />
+              </div>
+            </div>
+            <div className="absolute px-[8vw] bottom-0 pb-10 flex items-center justify-around w-full space-x-5 ">
+              <div className="block w-full h-1 bg-[#1c1c20]"></div>
+              <img className="w-10" src="/images/insta.svg" alt="" />
+              <img className="w-10" src="/images/github1.svg" alt="" />
+              <img className="w-10" src="/images/linkedin.svg" alt="" />
+              <div className="block w-full h-1 bg-[#1c1c20]"></div>
             </div>
           </section>
         </div>

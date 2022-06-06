@@ -78,7 +78,7 @@ body {
 }
 .textStroke3 {
   color: #1c1c20;
-  -webkit-text-fill-color: #1c1c20; /* Will override color (regardless of order) */
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #ffffff;
 }
@@ -89,7 +89,7 @@ body {
 }
 .textStroke6 {
   color: #ffffff;
-  -webkit-text-fill-color: #ffffff; /* Will override color (regardless of order) */
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #1c1c20;
 }
@@ -105,8 +105,7 @@ body {
   right: 0;
   /* top: calc(50% - 20px);
   left: calc(50% - 20px); */
-  width: 100px;
-  height: 100px;
+
   border-radius: 50%;
   background-color: #feae96;
   box-shadow: 0 0 60px 30px #fff, 0 0 100px 60px #feae96, 0 0 140px 90px #fe0944;
