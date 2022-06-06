@@ -583,16 +583,24 @@ export default function Home() {
               id="contact"
               className="absolute px-[8vw] bottom-0 pb-10 flex items-center justify-around w-full space-x-5"
             >
-              <div className="block w-full h-1 bg-[#1c1c20]"></div>
+              <div
+                className="block w-full h-1 bg-[#1c1c20]"
+                rel="noreferrer"
+              ></div>
               <a href="">
                 <img className="w-20" src="/images/insta.svg" alt="" />
               </a>
-              <a target="_blank" href="https://github.com/rohanb202">
+              <a
+                target="_blank"
+                href="https://github.com/rohanb202 "
+                rel="noreferrer"
+              >
                 <img className="w-20" src="/images/github1.svg" alt="" />
               </a>
               <a
                 target="_blank"
                 href="https://www.linkedin.com/in/rohan-bhandari-8824b0209/"
+                rel="noreferrer"
               >
                 <img className="w-20" src="/images/linkedin.svg" alt="" />
               </a>
