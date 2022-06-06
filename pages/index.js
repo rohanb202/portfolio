@@ -504,7 +504,7 @@ export default function Home() {
             <div className="px-[8vw] ">
               <div className="flex flex-col items-center py-5 space-x-5 lg:py-10 sm:flex-row">
                 <div className="py-2 text-4xl textStroke6 md:text-6xl BGB lg:text-7xl">
-                  Let's
+                  Let&apos;s
                 </div>
                 <MultiscrollText />
               </div>
