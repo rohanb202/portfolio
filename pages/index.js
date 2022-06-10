@@ -555,7 +555,11 @@ export default function Home() {
           </svg>
         </div>
 
-        <div ref={shaStart} className="relative overflow-hidden ">
+        <div
+          ref={shaStart}
+          className="relative overflow-hidden bg-transparent "
+        >
+          <div className="w-screen h-[125vh] sm:h-screen absolute  z-[3]"></div>
           <Sphere state={sphere} />
         </div>
 
