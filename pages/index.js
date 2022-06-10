@@ -20,6 +20,7 @@ import Project from "../components/Project";
 import Navbar from "../components/Navbar";
 import MultiscrollText from "../components/MultiscrollText";
 import { useRouter } from "next/router";
+import Sphere from "../components/Sphere";
 
 export default function Home() {
   const [nav, setNav] = useState(false);
@@ -57,16 +58,32 @@ export default function Home() {
   let main = useRef(null);
   let pro1 = useRef(null);
   let shaStart = useRef(null);
+  const st1 = useRef(null);
+  const st2 = useRef(null);
+  const st3 = useRef(null);
+  const st4 = useRef(null);
+  const st5 = useRef(null);
+  const st6 = useRef(null);
+  const st7 = useRef(null);
+  const st8 = useRef(null);
+  const st9 = useRef(null);
+  const st10 = useRef(null);
+  const st11 = useRef(null);
+  const st12 = useRef(null);
+  const st13 = useRef(null);
+  const st14 = useRef(null);
+  const stacks = useRef(null);
+  const cfollow = useRef(null);
+  const xonoPast = useRef(null);
   let router = useRouter();
+  const [sphere, setSphere] = useState(false);
   useEffect(() => {
     AOS.init();
     AOS.refresh();
-    if (
-      window.performance.navigation &&
-      window.performance.navigation.type === 1
-    ) {
+    if (!sessionStorage.getItem("is_reloaded")) {
       router.push("/");
     }
+    sessionStorage.setItem("is_reloaded", true);
 
     if (!nav) {
       document.querySelector("body").style.overflowY = "auto";
@@ -224,6 +241,14 @@ export default function Home() {
         scrub: true,
       },
     });
+    let tl6 = gsap.timeline({
+      scrollTrigger: {
+        trigger: shaStart.current,
+        start: "+=50%",
+        end: "+=50%",
+        scrub: true,
+      },
+    });
     const ats = [at1.current, at2.current, at3.current];
 
     const texts = [
@@ -252,6 +277,65 @@ export default function Home() {
         ease: "none",
       });
     });
+    const stackss = [
+      st1.current,
+      st2.current,
+      st3.current,
+      st4.current,
+      st5.current,
+      st6.current,
+      st7.current,
+      st8.current,
+      st9.current,
+      st10.current,
+      st11.current,
+      st12.current,
+      st13.current,
+      st14.current,
+    ];
+    ScrollTrigger.matchMedia({
+      "(min-width: 640px)": function () {
+        stackss.forEach((stack, i) => {
+          tl6.fromTo(
+            stack,
+            { xPercent: "-100" },
+
+            {
+              x: `${(stackss.length - i - 1) * (stack.offsetWidth / 2) * 0.3}`,
+              ease: "none",
+            },
+            0
+          );
+          tl6.to(stack, { opacity: 1 }, 0);
+        });
+        tl6.to(
+          cfollow.current,
+          { x: `${stacks.current.offsetWidth / 2}`, opacity: 0 },
+          "<"
+        );
+      },
+      "(max-width: 640px)": function () {
+        stackss.forEach((stack, i) => {
+          tl6.fromTo(
+            stack,
+            { yPercent: "100" },
+
+            {
+              y: `${-(stackss.length - i - 1) * (stack.offsetWidth / 2) * 0.3}`,
+              ease: "none",
+            },
+            0
+          );
+          tl6.to(stack, { opacity: 1 }, 0);
+        });
+        tl6.to(
+          cfollow.current,
+          { x: `${stacks.current.offsetWidth / 2}`, opacity: 0 },
+          "<"
+        );
+      },
+    });
+
     ats.forEach((at, i) => {
       tl5.to(at, {
         y: `${i * at.offsetHeight * 0.1}`,
@@ -302,20 +386,87 @@ export default function Home() {
         },
       })
       .to(
-        shaStart.current,
+        stacks.current,
         {
           opacity: 0,
           scrollTrigger: {
             trigger: homeRef.current,
             pin: true,
             scrub: 0.2,
-            start: "bottom bottom",
+            start: "top top",
             end: "+=125%",
           },
         },
 
         "<"
       );
+    gsap.to(
+      cfollow.current,
+      {
+        opacity: 1,
+        scrollTrigger: {
+          trigger: xono.current,
+
+          scrub: 0.2,
+          start: "top top",
+          end: "center cenetr",
+        },
+      },
+
+      "<"
+    );
+    const [y, yEnd] = [0, xono.current.scrollHeight / 1];
+
+    console.log(y, yEnd);
+    let tl7 = gsap.timeline({
+      scrollTrigger: {
+        trigger: xono.current,
+        scrub: 0.2,
+        start: "+=75%",
+        end: "+=100%",
+      },
+      reversed: true,
+    });
+    tl7.fromTo(
+      cfollow.current,
+      { y: y },
+      {
+        y: yEnd,
+      }
+    );
+    gsap.to(cfollow.current, {
+      visibility: "hidden",
+      opacity: 0,
+      scrollTrigger: {
+        trigger: shaStart.current,
+        scrub: 0.2,
+        start: "top top",
+        end: "center center",
+      },
+    });
+
+    ScrollTrigger.create({
+      trigger: shaStart.current,
+
+      start: "-=25%",
+      onEnter: () => {
+        console.log("enter");
+        setSphere(true);
+      },
+      onLeave: () => {
+        console.log("leave");
+        setSphere(false);
+      },
+      onEnterBack: () => {
+        console.log("enterBack");
+        setSphere(true);
+      },
+      onLeaveBack: () => {
+        console.log("leaveBack");
+        setSphere(false);
+      },
+      end: "+=75%",
+    });
   }, []);
 
   return (
@@ -390,36 +541,227 @@ export default function Home() {
           </div>
           {/* <div className="absolute  w-full text-white bg-[#1C1C20]  h-[30vh] z-[1]"></div> */}
         </section>
+        <div
+          className="relative -top-[2vh] inset-x-0 min-w-[10px] w-[0.8%] mx-auto opacity-100 "
+          ref={cfollow}
+        >
+          <svg
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="#ffffff"
+            className="opacity-0 xl:opacity-100"
+          >
+            <circle cx="50" cy="50" r="50" />
+          </svg>
+        </div>
+
+        <div ref={shaStart} className="relative overflow-hidden ">
+          <Sphere state={sphere} />
+        </div>
 
         <div className="relative" id="about">
           <section
             className="relative h-[100vh] text-5xl text-white lg:text-9xl"
             ref={homeRef}
           >
-            <div
-              ref={shaStart}
-              className="absolute flex flex-col items-center h-full justify-center px-[8vw] py-10 text-center  z-[5] BGB text-white text-7xl w-full"
-            >
-              <h1 data-aos="fade-down" className=" textStroke3">
-                ABOUT
-              </h1>
-              <div className="flex flex-col sm:flex-row items-center justify-center">
-                <img
-                  data-aos="fade-up"
-                  src="/images/fs.gif"
-                  className="w-[30rem]"
-                  alt=""
-                />
-                <h1
-                  data-aos="fade-right"
-                  className="py-5 text-xl leading-loose sm:py-10 md:text-3xl lg:text-5xl"
+            <div className="absolute h-[100vh] w-[100vw] top-[50%]   text-white BGB px-[8vw] mx-auto inset-x-0">
+              <div ref={stacks} className="relative mx-auto inext-x-0 ">
+                <div
+                  ref={st1}
+                  className="w-[75%]  h-[75%]  absolute min-w-[300px] min-h-[300px]   opacity-0 stack stack2  "
                 >
-                  I&apos;m a full stack web developer from India
-                </h1>
+                  <svg
+                    viewBox="0 0 220 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="#845EC2"
+                    className="opacity-100"
+                  >
+                    <rect width="100" height="100" />
+                  </svg>
+                </div>
+                <div
+                  ref={st2}
+                  className="w-[75%]  h-[75%] min-w-[300px] min-h-[300px]   absolute   stack stack2  opacity-0  "
+                >
+                  <svg
+                    viewBox="0 0 220 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="#845EC2"
+                    className="opacity-80"
+                  >
+                    <rect width="100" height="100" />
+                  </svg>
+                </div>
+                <div
+                  ref={st3}
+                  className="w-[75%]  h-[75%] min-w-[300px] min-h-[300px]   absolute   stack stack2  opacity-0 "
+                >
+                  <svg
+                    viewBox="0 0 220 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="#845EC2"
+                    className="opacity-60"
+                  >
+                    <rect width="100" height="100" />
+                  </svg>
+                </div>
+                <div
+                  ref={st4}
+                  className="w-[75%]  h-[75%] min-w-[300px] min-h-[300px]   absolute   stack stack2  opacity-0 "
+                >
+                  <svg
+                    viewBox="0 0 220 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="#845EC2"
+                    className="opacity-40"
+                  >
+                    <rect width="100" height="100" />
+                  </svg>
+                </div>
+                <div
+                  ref={st5}
+                  className="w-[75%]  h-[75%] min-w-[300px] min-h-[300px]   absolute   stack stack2 opacity-0 "
+                >
+                  <svg
+                    viewBox="0 0 220 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="#845EC2"
+                    className="opacity-20"
+                  >
+                    <rect width="100" height="100" />
+                  </svg>
+                </div>
+                <div
+                  ref={st6}
+                  className="w-[75%]  h-[75%] min-w-[300px] min-h-[300px]   absolute   stack stack2 opacity-0 "
+                >
+                  <svg
+                    viewBox="0 0 220 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="#845EC2"
+                    className="opacity-10 "
+                  >
+                    <rect width="100" height="100" stroke="#845EC2" />
+                  </svg>
+                </div>
+                <div
+                  ref={st7}
+                  className="w-[75%]  h-[75%] min-w-[300px] min-h-[300px]   absolute   stack stack2 opacity-0 "
+                >
+                  <svg
+                    viewBox="0 0 220 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="transparent"
+                    className=""
+                  >
+                    <rect width="100" height="100" stroke="#845EC2" />
+                  </svg>
+                </div>
+                <div
+                  ref={st8}
+                  className="w-[75%]  h-[75%] min-w-[300px] min-h-[300px]   absolute   stack stack2 opacity-0 "
+                >
+                  <svg
+                    viewBox="0 0 220 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="transparent"
+                    className=""
+                  >
+                    <rect width="100" height="100" stroke="#845EC2" />
+                  </svg>
+                </div>
+                <div
+                  ref={st9}
+                  className="w-[75%]  h-[75%] min-w-[300px] min-h-[300px]   absolute stack stack2   opacity-0 "
+                >
+                  <svg
+                    viewBox="0 0 220 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="transparent"
+                    className=""
+                  >
+                    <rect width="100" height="100" stroke="#845EC2" />
+                  </svg>
+                </div>
+                <div
+                  ref={st10}
+                  className="w-[75%]  h-[75%] min-w-[300px] min-h-[300px]   absolute stack stack2   opacity-0 "
+                >
+                  <svg
+                    viewBox="0 0 220 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="transparent"
+                    className=""
+                  >
+                    <rect width="100" height="100" stroke="#845EC2" />
+                  </svg>
+                </div>
+                <div
+                  ref={st11}
+                  className="w-[75%]  h-[75%] min-w-[300px] min-h-[300px]   absolute stack stack2   opacity-0 "
+                >
+                  <svg
+                    viewBox="0 0 220 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="transparent"
+                    className=""
+                  >
+                    <rect width="100" height="100" stroke="#845EC2" />
+                  </svg>
+                </div>
+                <div
+                  ref={st12}
+                  className="w-[75%]  h-[75%] min-w-[300px] min-h-[300px]   absolute stack stack2   opacity-0 "
+                >
+                  <svg
+                    viewBox="0 0 220 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="transparent"
+                    className=""
+                  >
+                    <rect width="100" height="100" stroke="#845EC2" />
+                  </svg>
+                </div>
+                <div
+                  ref={st13}
+                  className="w-[75%]  h-[75%] min-w-[300px] min-h-[300px]   absolute stack stack2   opacity-0 "
+                >
+                  <svg
+                    viewBox="0 0 220 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="transparent"
+                    className=""
+                  >
+                    <rect width="100" height="100" stroke="#845EC2" />
+                  </svg>
+                </div>
+                <div
+                  ref={st14}
+                  className="w-[75%]  h-[75%] min-w-[300px] min-h-[300px]   absolute stack stack2   opacity-0 "
+                >
+                  <svg
+                    viewBox="0 0 220 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="transparent"
+                    className=""
+                  >
+                    <rect width="100" height="100" stroke="#845EC2" />
+                  </svg>
+                </div>
+                <div className="relative -top-[25%] flex items-center justify-center w-full h-full">
+                  <h1 className="py-5 text-xl  leading-loose text-center sm:py-10 md:text-3xl lg:text-5xl z-[2] uppercase">
+                    make them{" "}
+                    <span data-aos="fade-right" className="textStroke3">
+                      {" "}
+                      interesting
+                    </span>
+                  </h1>
+                </div>
               </div>
             </div>
+
             <div
-              className="opacity-0 glow w-[50px] h-[50px] lg:w-[100px] lg:h-[100px] "
+              className="opacity-0 glow w-[50px] h-[50px] lg:w-[100px] lg:h-[100px]  "
               ref={glow}
             ></div>
             <div className="inset-0 flex justify-center m-auto ">
@@ -506,17 +848,17 @@ export default function Home() {
                 alt=""
               />
             </div>
-            <div className="relative sm:-top-[30vh]  flex flex-col items-center justify-center w-full text-center text-white BGB text-4xl  lg:text-7xl z-[3]  ">
+            <div className="relative sm:-top-[30vh]  flex flex-col items-center justify-center w-full text-center text-white BGB text-4xl  lg:text-7xl z-[3] uppercase  ">
               <div ref={at3} className="absolute textStroke3">
-                who loves <br />
-                to watch anime
+                and <br />
+                awesome too
               </div>
               <div ref={at2} className="absolute textStroke3 ">
-                who loves <br />
-                to watch anime
+                and <br />
+                awesome too
               </div>
               <div ref={at1} className="absolute ">
-                who loves <br /> to watch anime
+                and <br /> awesome too
               </div>
             </div>
           </section>

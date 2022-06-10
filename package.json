@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
+    "@react-three/drei": "^9.13.0",
+    "@react-three/fiber": "^8.0.22",
     "aos": "^2.3.4",
     "gsap": "^3.10.4",
     "locomotive-scroll": "^4.1.4",
@@ -17,7 +19,8 @@
     "next-themes": "^0.2.0",
     "next-transpile-modules": "^9.0.0",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "three": "^0.141.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",

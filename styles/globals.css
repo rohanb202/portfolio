@@ -120,3 +120,22 @@ body {
 .blackText {
   color: #1c1c20;
 }
+
+@media screen and (min-width: 640px) {
+  .stack {
+    transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(45deg)
+      rotateZ(45deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg)
+      skewY(0deg);
+  }
+}
+@media screen and (max-width: 640px) {
+  .stack2 {
+    transform: scaleX(1) scaleY(1) scaleZ(1) rotateX(45deg) rotateY(0deg)
+      rotateZ(45deg) translateX(0px) translateY(0px) translateZ(0px) skewX(0deg)
+      skewY(0deg);
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+  }
+}
