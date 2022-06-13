@@ -21,6 +21,8 @@ import Navbar from "../components/Navbar";
 import MultiscrollText from "../components/MultiscrollText";
 import { useRouter } from "next/router";
 import Sphere from "../components/Sphere";
+import MainText from "../components/MainText";
+import MainTitle from "../components/MainTitle";
 
 export default function Home() {
   const [nav, setNav] = useState(false);
@@ -911,13 +913,35 @@ export default function Home() {
             >
               <ScrollText text="CONTACT" rev />
             </div>
-            <div className="px-[8vw] ">
-              <div className="flex flex-col items-center py-2 space-x-5 lg:py-10 sm:flex-row">
-                <div className="py-2 text-4xl textStroke6 md:text-6xl BGB lg:text-7xl">
-                  Let&apos;s
-                </div>
-                <div className="hidden sm:block">
-                  <MultiscrollText />
+            <div className="px-[8vw]">
+              <div className="flex flex-col items-center justify-center space-y-[10%] pt-14 md:space-y-2 md:items-start md:pt-28">
+                <a
+                  href="mailto:rohanb22250@gmail.com"
+                  className="uppercase md:text-9xl xl:text-[12rem] BGB wordSpacing transition-all duration-100 ease-in-out text-5xl hover:scale-105 
+                  hidden md:block
+                  hover:lg:tracking-[2rem]  hover:xl:tracking-[4rem] hover:text-[#fe0944] "
+                >
+                  Ready?
+                </a>
+                <a
+                  href="mailto:rohanb22250@gmail.com"
+                  className="relative transition-all duration-100 ease-in-out md:hidden w-[200px] h-[200px] hover:scale-105 group"
+                >
+                  <div className="rounded-full relative w-[200px] transition-all duration-100 ease-in-out bg-black group-hover:bg-[#fe0944]    h-[200px]"></div>
+                  <h1
+                    href=""
+                    className="relative z-[1] -top-[51%] flex justify-center text-gray-200 uppercase BGB group-hover:animate-pulse"
+                  >
+                    Email Me
+                  </h1>
+                </a>
+                <div className="flex flex-col items-center justify-around py-2 space-x-5 md:justify-start lg:py-10 md:flex-row">
+                  <div className="py-2 text-4xl textStroke6 md:text-6xl BGB lg:text-7xl">
+                    Let&apos;s
+                  </div>
+                  <div className="hidden sm:block">
+                    <MultiscrollText />
+                  </div>
                 </div>
               </div>
               <div className="relative inset-x-0 mx-auto sm:hidden">
