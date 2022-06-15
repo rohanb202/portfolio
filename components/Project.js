@@ -10,7 +10,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-function Project({ no, text, date, link, rev, parag }) {
+function Project({ no, text, date, link, rev, parag, url }) {
   const [hover, setHover] = useState(false);
   let circ = useRef(null);
   let num = useRef(null);
@@ -34,6 +34,14 @@ function Project({ no, text, date, link, rev, parag }) {
       });
     }
   }, [hover]);
+  const openInNewTab = (url) => {
+    if (typeof window !== "undefined") {
+      // Client-side-only code
+
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+    console.log("yoyo");
+  };
   return (
     <div
       ref={main}
@@ -46,6 +54,7 @@ function Project({ no, text, date, link, rev, parag }) {
         <MainTitle text={no} hover={hover} setHover={setHover} />
       </div>
       <div
+        onClick={() => openInNewTab(url)}
         ref={img}
         onMouseLeave={() =>
           setTimeout(() => setTimeout(() => setHover(false), 500))

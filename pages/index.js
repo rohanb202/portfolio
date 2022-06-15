@@ -101,7 +101,7 @@ export default function Home() {
         scrub: true,
         start: "+=50%",
         end: "+=100%",
-        markers: true,
+        //markers: true,
       },
     });
     gsap.to(scrollTextCol.current, {
@@ -879,6 +879,7 @@ export default function Home() {
             <div className="mt-10 px-[8vw]">
               <div ref={pro1} id="project">
                 <Project
+                  url="https://github.com/rohanb202/linkedIn-clone"
                   no="01"
                   text="LinkedIn Clone"
                   date="May 2022"
@@ -890,6 +891,7 @@ styling , Recoil for state management, MongoDB as database"
               </div>
               <Project
                 no="02"
+                url="https://github.com/rohanb202/Insta-2.0"
                 text="Instagram Clone"
                 date="May 2022"
                 link="/images/p2.png"
@@ -897,6 +899,7 @@ styling , Recoil for state management, MongoDB as database"
                 rev
               />
               <Project
+                url="https://github.com/rohanb202/Ecommerce-clone"
                 no="03"
                 text="Ecommerce Websitee"
                 date="May 2022"
@@ -909,6 +912,7 @@ asynchronous redux actions
               />
               <Project
                 no="04"
+                url="https://kashiyatra.org/"
                 text="Kashiyatra 2022"
                 date="May 2022"
                 link="/images/p4.jpg"
