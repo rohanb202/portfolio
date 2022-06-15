@@ -10,7 +10,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-function Project({ no, text, date, link, rev }) {
+function Project({ no, text, date, link, rev, parag }) {
   const [hover, setHover] = useState(false);
   let circ = useRef(null);
   let num = useRef(null);
@@ -39,7 +39,8 @@ function Project({ no, text, date, link, rev }) {
       ref={main}
       className={`flex ${
         rev && `flex-row-reverse`
-      }  w-full py-10 px-2 relative lg:space-x-10 `}
+      }  w-full py-10 px-2 relative lg:space-x-10 h-[50vh] overflow-hidden`}
+      data-aos={`${rev ? "fade-left" : "fade-right"}`}
     >
       <div ref={num} className="absolute top-2 md:top-0 ">
         <MainTitle text={no} hover={hover} setHover={setHover} />
@@ -50,15 +51,14 @@ function Project({ no, text, date, link, rev }) {
           setTimeout(() => setTimeout(() => setHover(false), 500))
         }
         onMouseEnter={() => setHover(true)}
-        className={`flex py-5 flex-col cursor-pointer relative ${
-          rev && "pl-10"
+        className={`flex w-full py-5 flex-col cursor-pointer relative  ${
+          rev && "pl-10" && "items-end"
         } `}
-        data-aos={`${rev ? "fade-left" : "fade-right"}`}
       >
-        <div className=" w-10/12 min-w-[300px] min-h-[200px]     bg-white rounded-lg">
+        <div className="w-8/12 h-full min-w-[300px] min-h-[200px] bg-slate-200 rounded-lg ">
           <img
             src={link}
-            className="rounded-lg w-full h-full object-cover -z-[2] "
+            className="rounded-lg w-full h-full object-cover -z-[2]  "
           />
         </div>
         <div
@@ -68,7 +68,9 @@ function Project({ no, text, date, link, rev }) {
         >
           <h1 className="relative z-10 text-left BGB">{text}</h1>
           <div className="relative px-2">
-            <ArrowUpIcon className="z-10 w-5 rotate-45" />
+            <ArrowUpIcon
+              className={`z-10 w-5  ${rev ? `-rotate-45` : `rotate-45`}`}
+            />
             <div
               ref={circ}
               className="w-5 h-5 bg-[#fe0944] absolute rounded-full top-0 -z-[1] "
@@ -84,14 +86,14 @@ function Project({ no, text, date, link, rev }) {
           <p>{date}</p>
         </div>
       </div>
+
       <div
         ref={para}
-        className={` hidden lg:inline-flex relative ${!rev && "-left-20"} `}
+        className={` hidden py-10 lg:inline-flex relative w-[100%] OS ${
+          !rev && "-left-20"
+        } `}
       >
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis eos
-        aspernatur sequi, quas magni enim. Dignissimos explicabo voluptas,
-        voluptate praesentium nihil itaque doloremque sequi ipsum provident,
-        fugit nisi beatae eum.
+        {parag}
       </div>
     </div>
   );

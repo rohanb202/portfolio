@@ -99,8 +99,9 @@ export default function Home() {
       scrollTrigger: {
         trigger: contactRef.current,
         scrub: true,
-        start: "top bottom-=125%",
+        start: "+=50%",
         end: "+=100%",
+        markers: true,
       },
     });
     gsap.to(scrollTextCol.current, {
@@ -130,7 +131,7 @@ export default function Home() {
           className: "blackText",
           scrub: true,
         },
-        start: "top bottom-=130%",
+        start: "+=50%",
         end: "+=100%",
       },
     });
@@ -145,7 +146,7 @@ export default function Home() {
           className: "blackText",
           scrub: true,
         },
-        start: "top bottom-=130%",
+        start: "+=50%",
         end: "+=100%",
       },
     });
@@ -452,19 +453,19 @@ export default function Home() {
 
       start: "-=25%",
       onEnter: () => {
-        console.log("enter");
+        //console.log("enter");
         setSphere(true);
       },
       onLeave: () => {
-        console.log("leave");
+        //console.log("leave");
         setSphere(false);
       },
       onEnterBack: () => {
-        console.log("enterBack");
+        //console.log("enterBack");
         setSphere(true);
       },
       onLeaveBack: () => {
-        console.log("leaveBack");
+        //console.log("leaveBack");
         setSphere(false);
       },
       end: "+=75%",
@@ -882,39 +883,50 @@ export default function Home() {
                   text="LinkedIn Clone"
                   date="May 2022"
                   link="/images/p1.png"
+                  parag="Where you can post feeds, integrated with news on side panel using news API and features
+dark mode. Made with Next JS, Next Auth with MongoDB adapter as Google Auth, using Tailwind CSS for
+styling , Recoil for state management, MongoDB as database"
                 />
               </div>
               <Project
                 no="02"
-                text="LinkedIn Clone"
+                text="Instagram Clone"
                 date="May 2022"
-                link="/images/p1.png"
+                link="/images/p2.png"
+                parag="A mobile responsive web app where you can post feed with like and comment functionality, using Next JS ,Tailwind CSS, Firebasev9 and Recoil for state management."
                 rev
               />
               <Project
                 no="03"
-                text="LinkedIn Clone"
+                text="Ecommerce Websitee"
                 date="May 2022"
-                link="/images/p1.png"
+                link="/images/p3.png"
+                parag="An ecommerce store built with MERN stack, Node provides the backend environment for this application
+Express middleware is used to handle requests, routes. Mongoose schemas to model the application data,
+React for displaying UI components, Redux to manage application's state Redux Thunk middleware to handle
+asynchronous redux actions
+"
               />
               <Project
                 no="04"
-                text="LinkedIn Clone"
+                text="Kashiyatra 2022"
                 date="May 2022"
-                link="/images/p1.png"
+                link="/images/p4.jpg"
+                parag="It's an Annual Socio-Cultural festival of Indian Institute of Technology (BHU) Varanasi, Worked as a frontend
+web developer there."
                 rev
               />
             </div>
           </section>
           <section className="h-screen" ref={contactRef}>
             <div
-              className="pt-2 overflow-x-hidden textStroke3"
+              className="pt-2 overflow-x-hidden sm:hidden textStroke3"
               ref={scrollTextCol}
             >
               <ScrollText text="CONTACT" rev />
             </div>
             <div className="px-[8vw]">
-              <div className="flex flex-col items-center justify-center space-y-[10%] pt-14 md:space-y-2 md:items-start md:pt-28">
+              <div className="flex flex-col items-center justify-center space-y-[10%] pt-14 md:space-y-2 md:items-start md:pt-44">
                 <a
                   href="mailto:rohanb22250@gmail.com"
                   className="uppercase md:text-9xl xl:text-[12rem] BGB wordSpacing transition-all duration-100 ease-in-out text-5xl hover:scale-105 
