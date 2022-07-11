@@ -893,7 +893,7 @@ styling , Recoil for state management, MongoDB as database"
                 no="02"
                 url="https://github.com/rohanb202/Insta-2.0"
                 text="Instagram Clone"
-                date="May 2022"
+                date="Apr 2022"
                 link="/images/p2.png"
                 parag="A mobile responsive web app where you can post feed with like and comment functionality, using Next JS ,Tailwind CSS, Firebasev9 and Recoil for state management."
                 rev
@@ -902,7 +902,7 @@ styling , Recoil for state management, MongoDB as database"
                 url="https://github.com/rohanb202/Ecommerce-clone"
                 no="03"
                 text="Ecommerce Websitee"
-                date="May 2022"
+                date="Present"
                 link="/images/p3.png"
                 parag="An ecommerce store built with MERN stack, Node provides the backend environment for this application
 Express middleware is used to handle requests, routes. Mongoose schemas to model the application data,
@@ -914,7 +914,7 @@ asynchronous redux actions
                 no="04"
                 url="https://kashiyatra.org/"
                 text="Kashiyatra 2022"
-                date="May 2022"
+                date="Dec 2021"
                 link="/images/p4.jpg"
                 parag="It's an Annual Socio-Cultural festival of Indian Institute of Technology (BHU) Varanasi, Worked as a frontend
 web developer there."
@@ -972,7 +972,7 @@ web developer there."
                 className="block w-full h-1 bg-[#1c1c20]"
                 rel="noreferrer"
               ></div>
-              <a href="">
+              <a href="https://www.instagram.com/rohan.b.20/" rel="noreferrer">
                 <img className="w-20" src="/images/insta.svg" alt="" />
               </a>
               <a
